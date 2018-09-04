@@ -1,0 +1,5 @@
+name: connector-malaga
+version: 1.0.0
+description: Malaga IDS Connector
+protocol_type: HTTP
+ngsi_version: 1
