@@ -1,0 +1,5 @@
+name: connector-porto
+version: 1.0
+description: Porto IDS Connector
+protocol_type: HTTP
+ngsi_version: 2

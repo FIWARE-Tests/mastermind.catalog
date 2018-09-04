@@ -1,0 +1,5 @@
+name: connector-stratio
+version: 1.0
+description: Stratio IDS Connector
+protocol_type: HTTP
+ngsi_version: 2

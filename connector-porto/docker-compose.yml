@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-    malaga-mongo:
-        container_name: malaga-mongo
+    porto-mongo:
+        container_name: porto-mongo
         image: mongo:3.4
         restart: always
         networks:
@@ -11,36 +11,30 @@ services:
             options:
                 max-size: 1m
 
-    malaga-orion:
-        container_name: malaga-orion
+    porto-orion:
+        container_name: porto-orion
         image: registry.lab.fiware.org/ids-orion
-        command: -dbhost malaga-mongo -logLevel ERROR
+        command: -dbhost porto-mongo -logLevel ERROR
         restart: always
         ports:
-            - "11027:1026"
+            - "11028:1026"
         depends_on:
-            - malaga-mongo
+            - porto-mongo
         networks:
-            fleet:
-                aliases:
-                    - malaga-buses-orion
-                    - malaga-orion
-            ids:
-                aliases:
-                    - malaga-buses-orion
-                    - malaga-orion
+            - fleet
+            - ids
         logging:
             options:
                 max-size: 1m
 
-    malaga-pep:
-        container_name: malaga-pep
+    porto-pep:
+        container_name: porto-pep
         image: registry.lab.fiware.org/pep-proxy
         restart: always
         volumes:
-            - /opt/mastermind/pep-malaga.js:/opt/fiware-pep-proxy/config.js
+            - /opt/mastermind/pep-porto.js:/opt/fiware-pep-proxy/config.js
         depends_on:
-            - malaga-orion
+            - porto-orion
         networks:
             - fleet
             - ids
