@@ -32,7 +32,7 @@ services:
         image: registry.lab.fiware.org/pep-proxy
         restart: always
         volumes:
-            - /opt/mastermind/pep-stratio.js:/opt/fiware-pep-proxy/config.js
+            - /opt/static/pep-stratio.js:/opt/fiware-pep-proxy/config.js
         depends_on:
             - stratio-orion
         networks:
